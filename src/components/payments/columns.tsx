@@ -3,36 +3,56 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
+  date: string;
+  remarque: string;
+  index_debut: number;
+  index_finale: number;
+  kilometrage: number;
+  litrage: number;
+  consomation: number;
 };
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "date",
+    header: "Date",
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "index_debut",
+    header: "Index Debut",
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "index_finale",
+    header: "Index Finale",
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
+    accessorKey: "kilometrage",
+    header: "Kilometrage",
+  },
+  {
+    accessorKey: "litrage",
+    header: "Litrage",
+  },
+  {
+    accessorKey: "consomation",
+    header: "Consomation",
+  },
+  {
+    accessorKey: "remarque",
+    header: "Remarque",
+  },
 
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
-  },
+  // {
+  //   accessorKey: "amount",
+  //   header: () => <div className="text-right">Amount</div>,
+  //   cell: ({ row }) => {
+  //     const amount = parseFloat(row.getValue("amount"));
+  //     const formatted = new Intl.NumberFormat("en-US", {
+  //       style: "currency",
+  //       currency: "USD",
+  //     }).format(amount);
+
+  //     return <div className="text-right font-medium">{formatted}</div>;
+  //   },
+  // },
 ];
